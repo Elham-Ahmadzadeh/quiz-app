@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import QuestionCard from "./components/QuestionCard";
 import { QuestionState, fetchQuizQuestions, Difficulty } from "./Api";
-
+import { Wrapper, GlobalStyle } from "./App.styles";
 export type AnswerObject = {
   question: string;
   answer: string;
@@ -45,14 +45,23 @@ function App() {
         question: questions[number].question,
         answer,
         correct,
-        correctAnswer: questions[number].correct_answer,
-
-      
+        correctAnswer: questions[number].correct_answer,  
     }
     setUserAnswers(prev => [...prev , answerObject])
+  }
   };
-  const nextQuestion = () => {};
+  const nextQuestion = () => {
+      const nextQuestion = number + 1
+      if( nextQuestion === TOTAl_QUESTIONS) {
+        setGameOver(true)
+      }else {
+        setNumber(nextQuestion)
+      }
+  };
   return (
+    <>
+    <GlobalStyle />
+    <Wrapper>
     <div className="App">
       <h1>React Quiz</h1>
       {gameOver || userAnswers.length === TOTAl_QUESTIONS ? (
@@ -80,6 +89,8 @@ function App() {
         </button>
       ) : null}
     </div>
+    </Wrapper>
+   </>
   );
 }
 
