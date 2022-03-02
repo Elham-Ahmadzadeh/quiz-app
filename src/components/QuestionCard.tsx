@@ -8,31 +8,25 @@ type questionProps = {
   questionNr: number;
   totalQuestions: number;
 };
-const QuestionCard: React.FC<questionProps> = ({
+const QuestionCard: React.FunctionComponent<questionProps> = ({
   question,
   answers,
   callback,
   userAnswer,
   questionNr,
   totalQuestions,
-}) => {
-  return (<div>
+}) => (
+  <div>
     <p className="number">
       Question: {questionNr} / {totalQuestions}
     </p>
-    <p dangerouslySetInnerHTML={{__html:question}}></p>
-    <div>
-        {
-            answers.map(answer => (
-                <div>
-                    <button disabled={userAnswer} onClick={callback}>
-                        <span dangerouslySetInnerHTML={{__html:answer}}/>
-                    </button>
-                </div>
-            ))
-        }
-    </div>
+    <p dangerouslySetInnerHTML={{ __html: question }}/>
+      {answers.map((answer) => (
+          <button disabled={userAnswer} onClick={callback}>
+            <span dangerouslySetInnerHTML={{ __html: answer }} />
+          </button>
+      ))}
   </div>
-  )
-};
+);
+
 export default QuestionCard;
