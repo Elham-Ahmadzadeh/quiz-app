@@ -9,7 +9,7 @@ type questionProps = {
   totalQuestions: number;
 };
 const QuestionCard: React.FunctionComponent<questionProps> = ({
-  question,
+  question, 
   answers,
   callback,
   userAnswer,
@@ -23,7 +23,7 @@ const QuestionCard: React.FunctionComponent<questionProps> = ({
     <p dangerouslySetInnerHTML={{ __html: question }} />
     {answers.map((answer) => (
       <div key={answer}>
-        <button disabled={userAnswer} onClick={callback}>
+        <button disabled={userAnswer} value={answer} onClick={callback}>
           <span dangerouslySetInnerHTML={{ __html: answer }} />
         </button>
       </div>
