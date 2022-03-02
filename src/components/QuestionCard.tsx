@@ -20,12 +20,14 @@ const QuestionCard: React.FunctionComponent<questionProps> = ({
     <p className="number">
       Question: {questionNr} / {totalQuestions}
     </p>
-    <p dangerouslySetInnerHTML={{ __html: question }}/>
-      {answers.map((answer) => (
-          <button disabled={userAnswer} onClick={callback}>
-            <span dangerouslySetInnerHTML={{ __html: answer }} />
-          </button>
-      ))}
+    <p dangerouslySetInnerHTML={{ __html: question }} />
+    {answers.map((answer) => (
+      <div key={answer}>
+        <button disabled={userAnswer} onClick={callback}>
+          <span dangerouslySetInnerHTML={{ __html: answer }} />
+        </button>
+      </div>
+    ))}
   </div>
 );
 
